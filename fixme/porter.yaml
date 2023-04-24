@@ -135,26 +135,26 @@ install:
         template-file: "fixme.json"
         resource-group: "{{ bundle.parameters.resource_group }}"
         parameters:
-          name={{ bundle.parameters.FIXME_name }}
-          location={{ bundle.parameters.FIXME_location }}
-          prefix={{ bundle.parameters.FIXME_prefix }}
-          sku={{ bundle.parameters.FIXME_sku }}
-          publisherName={{ bundle.parameters.FIXME_publisherName }}
-          publisherEmail={{ bundle.parameters.FIXME_publisherEmail }}
-          administratorLoginPassword={{ bundle.parameters.FIXME_administratorLoginPassword }}
-          synapseAdminLogin={{ bundle.parameters.FIXME_synapseAdminLogin }}
-          synapseAdminTenant={{ bundle.parameters.FIXME_synapseAdminTenant }}
-          synapseAdminSID={{ bundle.parameters.FIXME_synapseAdminSID }}
-          adminUserName={{ bundle.parameters.FIXME_adminUserName }}
-          adminPassword={{ bundle.parameters.FIXME_adminPassword }}
-          accessPolicyUserId={{ bundle.parameters.FIXME_accessPolicyUserId }}
-          targetTenantId={{ bundle.parameters.FIXME_targetTenantId }}
-          helpDeskUserName={{ bundle.parameters.FIXME_helpDeskUserName }}
-          helpDeskUserPswd={{ bundle.parameters.FIXME_helpDeskUserPswd }}
-          targetEnvironment={{ bundle.parameters.FIXME_targetEnvironment }}
-          sqlConnectionId={{ bundle.parameters.FIXME_sqlConnectionId }}
-          oneDriveConnectionId={{ bundle.parameters.FIXME_oneDriveConnectionId }}
-          teamsConnectionId={{ bundle.parameters.FIXME_teamsConnectionId }}
+          -name={{ bundle.parameters.FIXME_name }}
+          -location={{ bundle.parameters.FIXME_location }}
+          -prefix={{ bundle.parameters.FIXME_prefix }}
+          -sku={{ bundle.parameters.FIXME_sku }}
+          -publisherName={{ bundle.parameters.FIXME_publisherName }}
+          -publisherEmail={{ bundle.parameters.FIXME_publisherEmail }}
+          -administratorLoginPassword={{ bundle.parameters.FIXME_administratorLoginPassword }}
+          -synapseAdminLogin={{ bundle.parameters.FIXME_synapseAdminLogin }}
+          -synapseAdminTenant={{ bundle.parameters.FIXME_synapseAdminTenant }}
+          -synapseAdminSID={{ bundle.parameters.FIXME_synapseAdminSID }}
+          -adminUserName={{ bundle.parameters.FIXME_adminUserName }}
+          -adminPassword={{ bundle.parameters.FIXME_adminPassword }}
+          -accessPolicyUserId={{ bundle.parameters.FIXME_accessPolicyUserId }}
+          -targetTenantId={{ bundle.parameters.FIXME_targetTenantId }}
+          -helpDeskUserName={{ bundle.parameters.FIXME_helpDeskUserName }}
+          -helpDeskUserPswd={{ bundle.parameters.FIXME_helpDeskUserPswd }}
+          -targetEnvironment={{ bundle.parameters.FIXME_targetEnvironment }}
+          -sqlConnectionId={{ bundle.parameters.FIXME_sqlConnectionId }}
+          -oneDriveConnectionId={{ bundle.parameters.FIXME_oneDriveConnectionId }}
+          -teamsConnectionId={{ bundle.parameters.FIXME_teamsConnectionId }}
       outputs:
         - name: "FixMe Deployment"
           jsonPath: "$[*]"
