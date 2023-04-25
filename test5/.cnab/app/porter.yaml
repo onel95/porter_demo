@@ -1,0 +1,93 @@
+# This is the configuration for Porter
+# You must define steps for each action, but the rest is optional
+# See https://porter.sh/author-bundles for documentation on how to configure your bundle
+# Uncomment out the sections below to take full advantage of what Porter can do!
+
+name: porter-test5
+version: 0.1.22
+description: "TEST5 - Example Porter Bundle"
+registry: pisees
+dockerfile: Dockerfile.tmpl
+credentials:
+  - name: azure_client_id
+    env: AZURE_CLIENT_ID
+    description: AAD Client ID for Azure account authentication
+  - name: azure_tenant_id
+    env: AZURE_TENANT_ID
+    description: Azure AAD Tenant Id for Azure account authentication
+  - name: azure_client_secret
+    env: AZURE_CLIENT_SECRET
+    description: AAD Client Secret for Azure account authentication
+  - name: azure_subscription_id
+    env: AZURE_SUBSCRIPTION_ID
+    description: Azure Subscription Id used to set the subscription where the account has access to multiple subscriptions
+parameters:
+  - name: resource_group
+    type: string
+    description: The name of the resource group to create
+  - name: location
+    type: string
+    description: The Azure location to create the resources in (ARM)
+  - name: vnetName
+    type: string
+    description: VNET name
+  - name: azure_location
+    type: string
+    description: The Azure location to create the resources in (AZ)
+    applyTo:
+      - "install"
+mixins:
+  - az
+  ##  - arm
+  - exec
+install:
+  - az:
+      description: "Azure CLI login"
+      arguments:
+        - "login"
+      flags:
+        service-principal:
+        username: "{{ bundle.credentials.azure_client_id}}"
+        password: "{{ bundle.credentials.azure_client_secret}}"
+        tenant: "{{ bundle.credentials.azure_tenant_id}}"
+  - az:
+      description: "Azure set subscription Id"
+      arguments:
+        - "account"
+        - "set"
+      flags:
+        subscription: "{{ bundle.credentials.azure_subscription_id}}"
+  - az:
+      description: "Create resource group if not exists"
+      arguments:
+        - "group"
+        - "create"
+      flags:
+        name: "{{ bundle.parameters.resource_group }}"
+        location: "{{ bundle.parameters.azure_location }}"
+        ##  - arm:
+        ##      description: ARM template to deploy an example
+        ##      name: sampledeploy
+        ##      resourceGroup: "{{ bundle.parameters.resource_group }}"
+        ##      template: test.json
+        ##      parameters:
+        ##        location: "{{ bundle.parameters.location }}"
+        ##        vnetName: "{{ bundle.parameters.vnetName }}"
+  - exec:
+      description: "Install TEST5"
+      command: ./helpers.sh
+      arguments:
+        - install
+        - "{{ bundle.parameters.resource_group }}"
+upgrade:
+  - exec:
+      description: "Upgrade"
+      command: ./helpers.sh
+      arguments:
+        - upgrade
+uninstall:
+  - exec:
+      description: "Uninstall TEST5"
+      command: ./helpers.sh
+      arguments:
+        - uninstall

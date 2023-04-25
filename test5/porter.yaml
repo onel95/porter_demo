@@ -6,7 +6,7 @@
 name: porter-test5
 version: 0.1.22
 description: "TEST5 - Example Porter Bundle"
-registry: porterreq.azurecr.io
+registry: pisees
 dockerfile: Dockerfile.tmpl
 
 credentials:
@@ -41,7 +41,7 @@ parameters:
 
 mixins:
   - az
-  - arm
+##  - arm
   - exec
 
 install:
@@ -72,14 +72,14 @@ install:
         name: "{{ bundle.parameters.resource_group }}"
         location: "{{ bundle.parameters.azure_location }}"
 
-  - arm:
-      description: ARM template to deploy an example
-      name: sampledeploy
-      resourceGroup: "{{ bundle.parameters.resource_group }}"
-      template: test.json
-      parameters:
-        location: "{{ bundle.parameters.location }}"
-        vnetName: "{{ bundle.parameters.vnetName }}"
+##  - arm:
+##      description: ARM template to deploy an example
+##      name: sampledeploy
+##      resourceGroup: "{{ bundle.parameters.resource_group }}"
+##      template: test.json
+##      parameters:
+##        location: "{{ bundle.parameters.location }}"
+##        vnetName: "{{ bundle.parameters.vnetName }}"
 
   - exec:
       description: "Install TEST5"
