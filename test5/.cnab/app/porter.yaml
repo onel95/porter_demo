@@ -31,6 +31,9 @@ parameters:
   - name: vnetName
     type: string
     description: VNET name
+  - name: subnet1Name
+    type: string
+    description: subNet1 name
   - name: azure_location
     type: string
     description: The Azure location to create the resources in (AZ)
@@ -74,11 +77,11 @@ install:
       flags:
         template-file: "test.json"
         resource-group: "{{ bundle.parameters.resource_group }}"
-#        parameters:
-#          name={{ bundle.parameters.FIXME_name }}
-#          location={{ bundle.parameters.FIXME_location }}
-#          prefix={{ bundle.parameters.FIXME_prefix }}
-
+        parameters: vnetName={{ bundle.parameters.vnetName }} subnet1Name={{ bundle.parameters.subnet1Name }}
+        #          prefix={{ bundle.parameters.FIXME_prefix }}
+      outputs:
+        - name: "Test5 Deployment"
+          jsonPath: "$[*]"
 ##  - arm:
 ##      description: ARM template to deploy an example
 ##      name: sampledeploy
