@@ -16,9 +16,9 @@ RUN apt-get update && apt-get install -y azure-cli
 # exec mixin has no buildtime dependencies
 
 COPY . $BUNDLE_DIR
-# $BUNDLE_DIR/porter.yaml
-#RUN rm -fr $BUNDLE_DIR/.cnab
-#COPY .cnab /cnab
-#COPY test.json /cnab/app
-#WORKDIR $BUNDLE_DIR
-#CMD ["/cnab/app/run"]
+RUN rm $BUNDLE_DIR/porter.yaml
+RUN rm -fr $BUNDLE_DIR/.cnab
+COPY .cnab /cnab
+COPY test.json /cnab/app
+WORKDIR $BUNDLE_DIR
+CMD ["/cnab/app/run"]

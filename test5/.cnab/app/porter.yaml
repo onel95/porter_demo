@@ -65,20 +65,35 @@ install:
       flags:
         name: "{{ bundle.parameters.resource_group }}"
         location: "{{ bundle.parameters.azure_location }}"
-        ##  - arm:
-        ##      description: ARM template to deploy an example
-        ##      name: sampledeploy
-        ##      resourceGroup: "{{ bundle.parameters.resource_group }}"
-        ##      template: test.json
-        ##      parameters:
-        ##        location: "{{ bundle.parameters.location }}"
-        ##        vnetName: "{{ bundle.parameters.vnetName }}"
-  - exec:
-      description: "Install TEST5"
-      command: ./helpers.sh
+  - az:
+      description: "Deploy ARM with az"
       arguments:
-        - install
-        - "{{ bundle.parameters.resource_group }}"
+        - "deployment"
+        - "group"
+        - "create"
+      flags:
+        template-file: "test.json"
+        resource-group: "{{ bundle.parameters.resource_group }}"
+#        parameters:
+#          name={{ bundle.parameters.FIXME_name }}
+#          location={{ bundle.parameters.FIXME_location }}
+#          prefix={{ bundle.parameters.FIXME_prefix }}
+
+##  - arm:
+##      description: ARM template to deploy an example
+##      name: sampledeploy
+##      resourceGroup: "{{ bundle.parameters.resource_group }}"
+##      template: test.json
+##      parameters:
+##        location: "{{ bundle.parameters.location }}"
+##        vnetName: "{{ bundle.parameters.vnetName }}"
+
+#  - exec:
+#      description: "Install TEST5"
+#      command: ./helpers.sh 
+#      arguments:
+#        - install
+#        - "{{ bundle.parameters.resource_group }}"
 upgrade:
   - exec:
       description: "Upgrade"
