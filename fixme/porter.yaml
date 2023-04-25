@@ -94,7 +94,7 @@ parameters:
     
 mixins:
   - az
-  - arm
+#  - arm
   - exec
 
 install:
