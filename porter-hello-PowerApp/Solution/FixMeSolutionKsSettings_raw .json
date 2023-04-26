@@ -1,0 +1,10 @@
+{
+  "EnvironmentVariables": [],
+  "ConnectionReferences": [
+    {
+      "LogicalName": "fixmedbsrvr.database.windows.net;fixmedb",
+      "ConnectionId": "SqlConnectionId",
+      "ConnectorId": "/providers/microsoft.powerapps/apis/shared_sql"
+    }  
+  ]
+}
