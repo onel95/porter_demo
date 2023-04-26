@@ -1,0 +1,38 @@
+{
+  
+  "ActivateFlowConfiguration": [
+    {
+      "solutionComponentName": "Fetch doctors information based on specialization",
+      "solutionComponentUniqueName": "c39f7acc-4bfc-4c89-be74-f0a34af0b3e9",
+      "activateAsUser": "ActivateFlowUserEmail"
+    },
+    {
+      "solutionComponentName": "Fixme Schedule Interview",
+      "solutionComponentUniqueName": "6a6b3e43-29ed-45ff-8769-b0e083f635f6",
+      "activateAsUser": "ActivateFlowUserEmail"
+    },
+    {
+      "solutionComponentName": "Teams appointment workflow",
+      "solutionComponentUniqueName": "dfa8e478-eb0a-41dd-a6ad-2ac61ac05851",
+      "activateAsUser": "ActivateFlowUserEmail"
+    }
+  ],
+  "EnvironmentVariables": [],
+  "ConnectionReferences": [
+    {
+      "LogicalName": "fixme_6db12606864f44adabb26dfd8c516096",
+      "ConnectionId": "fixmedbsrvr.database.windows.net;fixmedb",
+      "ConnectorId": "/providers/microsoft.powerapps/apis/shared_sql"
+    },
+    {
+      "LogicalName": "fixme_sharedonedriveforbusiness_1336e",
+      "ConnectionId": "admin@CRM465671.onmicrosoft.com",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_onedriveforbusiness"
+    },
+    {
+      "LogicalName": "fixme_sharedteams_4f148",
+      "ConnectionId": "admin@CRM465671.onmicrosoft.com",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_teams"
+    }
+  ]
+}

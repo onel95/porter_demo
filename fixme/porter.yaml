@@ -1,7 +1,7 @@
 name: porter-fixme
-version: 0.1.0
+version: 0.2.0
 description: "Deploy FixMe"
-registry: localhost:5000
+registry: pisees
 
 dockerfile: Dockerfile.tmpl
 
@@ -158,6 +158,12 @@ install:
            sqlConnectionId={{ bundle.parameters.FIXME_sqlConnectionId }}
            oneDriveConnectionId={{ bundle.parameters.FIXME_oneDriveConnectionId }}
            teamsConnectionId={{ bundle.parameters.FIXME_teamsConnectionId }}
+  - exec: 
+      description: "Import Power Platform Solution"
+      command: "pwsh"
+      arguments:
+        - "-File"
+        - "./scripts/run_import_powerplatform_solution.ps1"
 
       outputs:
         - name: "FixMe Deployment"

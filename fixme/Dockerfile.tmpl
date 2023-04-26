@@ -18,7 +18,7 @@ COPY . $BUNDLE_DIR
 #TODO: Not sure why this was not working until I did after COPY above. Investigate this further
 RUN curl -L https://www.nuget.org/api/v2/package/Microsoft.PowerApps.CLI.Core.linux-x64/1.21.13 --output /cnab/app/pac.nuget
 RUN cd /cnab/app/ && unzip /cnab/app/pac.nuget && chmod +x /cnab/app/tools/pac
-#RUN pwsh --File /cnab/app//scripts/prerequisites.ps1
+RUN pwsh --File /cnab/app//scripts/prerequisites.ps1
 ## 
 RUN rm $BUNDLE_DIR/porter.yaml
 RUN rm -fr $BUNDLE_DIR/.cnab
