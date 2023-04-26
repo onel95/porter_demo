@@ -1,7 +1,7 @@
 name: porter-fixme
 version: 0.1.0
 description: "Deploy FixMe"
-registry: onelhirmez
+registry: localhost:5000
 
 dockerfile: Dockerfile.tmpl
 

@@ -1,20 +1,25 @@
 #FROM debian:stretch-slim
-FROM debian:bullseye
+#FROM debian:bullseye
+# confirmed image below does not have Azure CLI
+FROM mcr.microsoft.com/dotnet/sdk:6.0
 
 ARG BUNDLE_DIR
 
 RUN apt-get update && apt-get install -y ca-certificates
-
+RUN apt install unzip
 RUN apt-get update && apt-get install -y apt-transport-https lsb-release gnupg curl
 RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /etc/apt/trusted.gpg.d/microsoft.asc.gpg
 RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb_release -cs) main" > /etc/apt/sources.list.d/azure-cli.list
 RUN apt-get update && apt-get install -y azure-cli
 
-
 # exec mixin has no buildtime dependencies
 
-
 COPY . $BUNDLE_DIR
+#TODO: Not sure why this was not working until I did after COPY above. Investigate this further
+RUN curl -L https://www.nuget.org/api/v2/package/Microsoft.PowerApps.CLI.Core.linux-x64/1.21.13 --output /cnab/app/pac.nuget
+RUN cd /cnab/app/ && unzip /cnab/app/pac.nuget && chmod +x /cnab/app/tools/pac
+#RUN pwsh --File /cnab/app//scripts/prerequisites.ps1
+## 
 RUN rm $BUNDLE_DIR/porter.yaml
 RUN rm -fr $BUNDLE_DIR/.cnab
 COPY .cnab /cnab
