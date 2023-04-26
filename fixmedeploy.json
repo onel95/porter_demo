@@ -159,8 +159,8 @@
     "cnab_azure_subscription_id": "[subscription().subscriptionId]",
     "cnab_azure_tenant_id": "[subscription().tenantId]",
     "cnab_installation_name": "porter-fixme",
-    "containerGroupName": "[concat('cg-',uniqueString(resourceGroup().id, 'porter-fixme', 'onelhirmez/porter-fixme:v0.1.0'))]",
-    "containerName": "[concat('cn-',uniqueString(resourceGroup().id, 'porter-fixme', 'onelhirmez/porter-fixme:v0.1.0'))]"
+    "containerGroupName": "[concat('cg-',uniqueString(resourceGroup().id, 'porter-fixme', 'pisees/porter-fixme:v0.2.0'))]",
+    "containerName": "[concat('cn-',uniqueString(resourceGroup().id, 'porter-fixme', 'pisees/porter-fixme:v0.2.0'))]"
   },
   "resources": [
     {
@@ -264,7 +264,7 @@
                 },
                 {
                   "name": "CNAB_BUNDLE_TAG",
-                  "value": "onelhirmez/porter-fixme:v0.1.0"
+                  "value": "pisees/porter-fixme:v0.2.0"
                 },
                 {
                   "name": "CNAB_PARAM_resource_group",
